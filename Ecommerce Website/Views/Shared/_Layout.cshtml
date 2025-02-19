@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- page title -->
+    <title>Home page</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="~/images/header/yyy.png" />
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="~/css/output.css" />
+    <!-- box-icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet" />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500&family=Poppins:wght@400;500;600&display=swap"
+          rel="stylesheet" />
+    <!-- swiper slider css -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="~/css/index.css" />
+
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="hidden lg:block header__top py-2 border-b border-gray-200 relative z-20">
+        <div class="container flex items-center justify-between">
+            <div class="flex">
+                <p class="pr-4 border-r border-gray-200 text-sm">(90)123 45 67</p>
+                <a href="#" class="pl-4 text-sm">Store location</a>
+            </div>
+            <div class="flex items-center">
+                <div class="pl-4">
+                    <ul>
+                        @if (string.IsNullOrEmpty(ViewBag.CheckSession))
+                        {
+                            <li>
+                                <a href="@Url.Action("customerLogin","Customer")" class="text-sm hover:text-[#4E97FD] duration-200">
+                                    Log In &nbsp;<span class="text-gray-400">|</span>&nbsp; Sign Up
+                                </a>
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("customerLogout","Customer")" class="text-sm hover:text-[#4E97FD] duration-200">
+                                    LogOut
+                                </a>
+                            </li>
+
+                        }
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main header -->
+    <div class="header__main sticky top-0 left-0 z-10 w-full bg-white shadow-lg">
+        <div class="container flex items-center justify-between">
+            <a href="#" class="flex items-center py-6 lg:py-0">
+                <img src="~/images/header/logo.png"
+                     alt="logo"
+                     class="w-6 md:w-8 mr-1 md:mr-2" />
+                <span class="text-xl md:text-3xl font-semibold">GO>SHOP</span>
+            </a>
+
+            <ul class="hidden lg:flex items-center">
+                <li class="py-6 mr-3 2xl:mr-4 hover:text-[#4E97FD] duration-200">
+                    <a href="@Url.Action("Index","Customer")" class="font-medium">Home</a>
+                </li>
+                <li class="py-6 mx-3 2xl:mx-4 hover:text-[#4E97FD] duration-200">
+                    <a href="@Url.Action("fetchAllProducts","Customer")" class="font-medium">Product</a>
+                </li>
+
+                <li class="py-6 mx-3 2xl:mx-4 hover:text-[#4E97FD] duration-200">
+                    <a href="@Url.Action("AboutUs","Customer")" class="font-medium">About Us</a>
+                </li>
+                <li class="pages relative py-6 mx-3 2xl:mx-4">
+                    <span class="font-medium flex items-center duration-200 cursor-default">
+                        Category <i class="bx bx-chevron-down text-lg"></i>
+                    </span>
+                    <ul class="overflow-hidden opacity-0 absolute left-0 top-[120%] py-2 bg-white shadow-lg min-w-[170px] duration-300">
+                        @Html.Partial("fetchCategoryList", ViewData["category"])
+
+                    </ul>
+                </li>
+                <li class="py-6 ml-3 2xl:ml-4 hover:text-[#4E97FD] duration-200">
+                    <a href="@Url.Action("feedback","Customer")" class="font-medium">Contact Us</a>
+                </li>
+            </ul>
+
+            <ul class="flex items-center">
+
+                <li class="mx-2 sm:mx-3 md:mx-4 2xl:mx-6">
+                    <a href="@Url.Action("CustomerProfile","Customer")"
+                       class="text-2xl sm:text-[27px] md:text-3xl hover:text-[#4E97FD] duration-200">
+                        <i class="bx bx-user"></i>
+                    </a>
+                </li>
+                <li class="mx-2 sm:mx-3 md:mx-4 2xl:mx-6">
+                    <a href="#"
+                       class="text-2xl sm:text-[27px] md:text-3xl hover:text-[#4E97FD] duration-200">
+                        <i class="bx bx-heart"></i>
+                    </a>
+                </li>
+                <li class="cart relative hover:text-[#4E97FD] cursor-pointer">
+                    <a href="@Url.Action("fetchCart","Customer")"
+                       class="text-2xl sm:text-[27px] md:text-3xl duration-200">
+                        <i class="bx bx-shopping-bag"></i>
+                    </a>
+                </li>
+                <li class="ml-2 sm:ml-3 md:ml-4 lg:hidden">
+                    <a href="#"
+                       class="text-[27px] sm:text-3xl md:text-4xl hover:text-[#4E97FD] duration-200">
+                        <i class="bx bx-menu"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Responsive header -->
+    <div class="header-responsive w-screen h-screen fixed top-0 left-0 bg-[#000000c0] z-20 opacity-0 duration-300">
+        <aside class="header-content p-6 sm:p-8 bg-[#4E97FD] h-full overflow-y-auto w-[90%] sm:w-1/2 md:w-[35%] flex flex-col justify-between absolute top-0 -left-full duration-200">
+            <div class="close-sidebar w-8 h-8 bg-white rounded-md flex items-center justify-center text-gray-700 absolute top-4 right-4 text-3xl">
+                <i class="bx bx-x close-sidebar"></i>
+            </div>
+            <ul class="flex flex-col">
+                <li class="mb-3">
+                    <a href="#" class="font-medium text-[15px] text-white">Home</a>
+                </li>
+                <li class="my-3">
+                    <a href="#" class="font-medium text-[15px] text-white">Shop</a>
+                </li>
+                <li class="my-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-[15px] text-white">Collection</span>
+                        <span class="collection-open text-lg text-white opacity-60 duration-300">+</span>
+                    </div>
+                    <ul class="collection-sub-menu pl-4 h-0 overflow-y-hidden duration-300">
+                        <li class="my-3">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-[15px] text-white uppercase">Accessories</span>
+                                <span class="accessories-open text-lg text-white opacity-60">+</span>
+                            </div>
+                            <ul class="accessories-sub-menu pl-4 h-0 overflow-y-hidden">
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Jewerly</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Sandals</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Jewerly</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Best shoe</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Boot shoe</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Brogan</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="my-3">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-[15px] text-white uppercase">Fabric</span>
+                                <span class="fabric-open text-lg text-white opacity-60">+</span>
+                            </div>
+                            <ul class="fabric-sub-menu pl-4 h-0 overflow-y-hidden">
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Chelsea boot</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Broothel creeper</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Cufflinks</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Cap</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Jeans</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Shalwar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="mt-3">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-[15px] text-white uppercase">New arrivals</span>
+                                <span class="arrivals-open text-lg text-white opacity-60">+</span>
+                            </div>
+                            <ul class="arrivals-sub-menu pl-4 h-0 overflow-y-hidden">
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Belts</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Wallets</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Glass</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Lingerie</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#" class="text-sm text-white">Blouse</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="my-3">
+                    <a href="#" class="font-medium text-[15px] text-white">Blog</a>
+                </li>
+                <li class="my-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-[15px] text-white">Pages</span>
+                        <span class="pages-open text-lg text-white opacity-60 duration-300">+</span>
+                    </div>
+                    <ul class="pages-sub-menu pl-4 h-0 overflow-y-hidden">
+                        <li class="my-3">
+                            <a href="#" class="text-sm text-white">About Us</a>
+                        </li>
+                        <li class="my-3">
+                            <a href="#" class="text-sm text-white">Contact</a>
+                        </li>
+                        <li class="my-3">
+                            <a href="#" class="text-sm text-white">Privacy Policy</a>
+                        </li>
+                        <li class="my-3">
+                            <a href="#" class="text-sm text-white">Terms of services</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mt-3">
+                    <a href="#" class="font-medium text-[15px] text-white">Contact us</a>
+                </li>
+            </ul>
+            <div class="mt-10">
+                <ul class="flex flex-col">
+                    <li class="mb-2">
+                        <a href="#" class="font-medium text-[15px] text-white">Store location</a>
+                    </li>
+                    <li class="my-2">
+                        <a href="#" class="font-medium text-[15px] text-white">Sign In | Sign Up</a>
+                    </li>
+                    <li class="my-2">
+                        <a href="#" class="font-medium text-[15px] text-white">(99) 123 45 67</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="#" class="font-medium text-[15px] text-white">USD</a>
+                    </li>
+                </ul>
+                <ul class="flex items-center mt-10">
+                    <a href="#"
+                       class="w-8 h-8 text-lg flex items-center justify-center bg-white text-gray-700 mr-1 rounded-full">
+                        <i class="bx bxl-telegram"></i>
+                    </a>
+                    <a href="#"
+                       class="w-8 h-8 text-lg flex items-center justify-center bg-white text-gray-700 mx-1 rounded-full">
+                        <i class="bx bxl-instagram"></i>
+                    </a>
+                    <a href="#"
+                       class="w-8 h-8 text-lg flex items-center justify-center bg-white text-gray-700 mx-1 rounded-full">
+                        <i class="bx bxl-google"></i>
+                    </a>
+                    <a href="#"
+                       class="w-8 h-8 text-lg flex items-center justify-center bg-white text-gray-700 mx-1 rounded-full">
+                        <i class="bx bxl-twitter"></i>
+                    </a>
+                    <a href="#"
+                       class="w-8 h-8 text-lg flex items-center justify-center bg-white text-gray-700 ml-1 rounded-full">
+                        <i class="bx bxl-facebook-circle"></i>
+                    </a>
+                </ul>
+            </div>
+        </aside>
+    </div>
+    <!-- Search area -->
+    <div class="search-area flex items-center justify-center h-screen w-screen fixed top-0 left-0 z-20 bg-white duration-300">
+        <input type="text"
+               class="w-4/5 md:w-[60%] py-1 sm:py-2 text-2xl sm:text-4xl text-gray-600 outline-none border-b-2 border-[#4E97FD]"
+               placeholder="Search our store" />
+        <i class="bx bx-x close-search font-normal text-gray-700 text-3xl sm:text-5xl absolute top-6 sm:top-10 right-6 sm:right-10 md:right-16"></i>
+    </div>
+
+    <!----------------------------------------------------------------------------------------------------------------------->
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+
+    <!------------------------------------------------------------------------------------------------------------------------>
+    <!-- FOOTER -->
+    <footer id="footer" class="pb-2 sm:pb-8">
+        <div class="container py-10 flex flex-wrap">
+            <div class="w-full sm:w-1/2 lg:w-1/4 sm:pr-2 mb-6 sm:mb-10 lg:mb-0">
+                <a href="#" class="flex items-center py-2 sm:py-6 lg:py-0">
+                    <img src="~/images/header/logo.png"
+                         alt="logo"
+                         class="w-6 md:w-8 mr-1 md:mr-2" />
+                    <span class="text-xl md:text-3xl font-semibold">GO>SHOP</span>
+                </a>
+                <p class="text-sm text-gray-600 mt-2 sm:mt-6">
+                    Copyright &copy; 2025 | Built by Salim Alam.
+                </p>
+            </div>
+            <div class="w-full sm:w-1/2 lg:w-1/4 sm:px-2 mb-6 sm:mb-10 lg:mb-0">
+                <h3 class="text-xl font-semibold mb-5 text-gray-800">Information</h3>
+                <ul>
+                    
+                    <li class="mb-4">
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Delivery Information</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Privacy Policy</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Terms & Conditions</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Customer Service</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Return Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full sm:w-1/2 lg:w-1/4 sm:px-2 mb-6">
+                <h3 class="text-xl font-semibold mb-5 text-gray-800">
+                    Customer Service
+                </h3>
+                <ul>
+                    
+                    <li class="mb-4">
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Order History</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Wishlist</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Newsletter</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#"
+                           class="text-gray-600 text-sm capitalize hover:text-[#4E97FD] duration-200">Money Return</a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <div class="w-full sm:w-1/2 lg:w-1/4 sm:pl-2">
+                <h3 class="text-xl font-semibold mb-5 text-gray-800">
+                    Download Our App
+                </h3>
+                <p class="text-gray-600 text-sm capitalize">Fast Convenient Access</p>
+                <div class="flex my-6">
+                    <a href="#" class="mr-4">
+                        <img src="~/images/footer/app-store.webp"
+                             alt="app store logo"
+                             class="shadow-lg w-[120px] sm:w-[150px]" />
+                    </a>
+                    <a href="#">
+                        <img src="~/images/footer/google-play.webp"
+                             alt="app store logo"
+                             class="shadow-lg w-[120px] sm:w-[150px]" />
+                    </a>
+                </div>
+                <p class="text-gray-600 text-sm capitalize">
+                    Secured Payment Gateways
+                </p>
+                <div class="flex mt-6">
+                    <a href="#">
+                        <img src="~/images/footer/google-play.webp"
+                             alt="payment images" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="~/js/app.js"></script>
+</body>
+
+</html>
+
+

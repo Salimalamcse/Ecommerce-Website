@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "fetchCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model List<Cart>
+<div class="container mx-auto mt-6">
+    <h2 class="text-2xl font-semibold text-center mb-4">Your Cart</h2>
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="px-4 py-2 border text-center">Cart Id</th>
+                    <th class="px-4 py-2 border text-center">Product Name</th>
+                    <th class="px-4 py-2 border text-center">Product Quantity</th>
+                    <th class="px-4 py-2 border text-center">Product Price</th>
+                    <th class="px-4 py-2 border text-center">Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cart in Model)
+                {
+                    <tr class="bg-white border-b">
+                        <td class="px-4 py-2 border text-center">@cart.Id</td>
+                        <td class="px-4 py-2 border text-center">@cart.products.product_name</td>
+                        <td class="px-4 py-2 border text-center">@cart.product_quntity</td>
+                        <td class="px-4 py-2 border text-center">@cart.products.product_Price</td>
+
+                        <td class="px-4 py-2 border text-center">
+                            <a href="@Url.Action("removeProduct","customer",new{id=cart.Id})" class="inline-block bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" onclick="removeFromCart(@cart.cart_id)">Remove</a>
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+

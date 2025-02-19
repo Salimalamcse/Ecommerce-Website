@@ -1,0 +1,23 @@
+﻿@model Product
+<div class="container-fluid px-4">
+    <h2 class="mt-4 text-center text-uppercase text-bg-danger" style="letter-spacing:4px">do you want to delete this product </h2>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <ul class="list-group my-4">
+            <img src="@Url.Content("~/product_images/" + Model.product_image)" asp-append-version="true"
+                 width="250px" height="250px" class="my-3" />
+            <li class="list-group-item">Customer id : @Model.product_id</li>
+            <li class="list-group-item">Customer Name : @Model.product_name</li>
+            <li class="list-group-item">Customer Price : @Model.product_Price</li>
+            <li class="list-group-item">Customer Description : @Model.product_Description</li>
+            <li class="list-group-item">Category : @Model.product_name</li>
+        </ul>
+        <a href="@Url.Action("deleteProduct","Admin",new{id=Model.product_id})" class="btn btn-danger">Delete Category</a>
+        <a href="@Url.Action("fetchProduct","Admin",new{id=Model.product_name})" class="btn btn-warning ">Back to List</a>
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+

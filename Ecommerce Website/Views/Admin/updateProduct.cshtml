@@ -1,0 +1,38 @@
+﻿@model Product
+<div class="container-fluid px-4">
+    <h2 class="mt-4 text-center text-uppercase" style="letter-spacing:4px">Update / Edit product</h2>
+</div>
+
+<div class="container-fluid px-4 ">
+    <div class="col-md-2"></div>
+    <div class="col-2 container-fluid px-4">
+        <form method="post" enctype="multipart/form-data">
+
+            <input type="hidden" name="product_id" value="@Model.product_id" />
+            <input type="text" name="product_name" value="@Model.product_name" class="form-control my-3" />
+            <input type="text" name="product_price" value="@Model.product_Price" class="form-control my-3" />
+            <input type="text" name="product_Description" value="@Model.product_Description" class="form-control my-3" />
+            @Html.Partial("CategoryDropdown", ViewData["category"])
+
+            <input type="hidden" name="product_image" value="@Model.product_image" class="form-control my-3" />
+
+            <input type="submit" value="Update Category" class="form-control my-3 btn btn-primary" />
+
+        </form>
+        <form method="post" asp-action="ChangeProductImage" enctype="multipart/form-data">
+
+            <input type="hidden" name="product_id" value="@Model.product_id" />
+            <input type="hidden" name="product_name" value="@Model.product_name" />
+            <input type="hidden" name="product_Price" value="@Model.product_Price" />
+            <input type="hidden" name="product_Description" value="@Model.product_Description" />
+            <input type="hidden" name="Cat_id" value="@Model.cat_id" />
+            <input type="file" name="product_image" value="@Model.product_image" class="form-control my-3" />
+
+            <img src="@("~/product_images/"+Model.product_image)" asp-append-version="true" style="width:250px; height:250px" />
+            <input type="submit" value="Update Image" class="form-control my-3 btn btn-primary" />
+        </form>
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+

@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="main">
+    <!-- INTRO SECTION -->
+    <section id="intro" class="mt-5">
+        <div class="container">
+            <div class="flex flex-wrap 2xl:flex-nowrap">
+                <div class="intro__slider swiper h-[450px] lg:h-[530px] w-full 2xl:w-2/3">
+                    <div class="swiper-wrapper">
+                        <!-- 1 -->
+                        <div class="swiper-slide w-full h-full relative">
+                            <img src="~/images/intro/g.jpg"
+                                 alt="intro-img"
+                                 class="w-full h-full object-cover" />
+                            <div class="absolute top-0 left-0 w-full h-full flex flex-col items-start justify-end p-5 sm:p-7 md:p-10">
+                               
+                                <a href="#"
+                                   class="py-[10px] md:py-3 px-7 md:px-8 lg:py-4 lg:px-10 font-semibold text-sm md:text-base rounded-[30px] md:rounded-[35px] text-white bg-[#4E97FD]  duration-300">Best Offer</a>
+                            </div>
+                        </div>
+                        <!-- 2 -->
+                        <div class="swiper-slide w-full h-full relative">
+                            <img src="~/images/intro/refrigereter.jpg"
+                                 alt="intro-img"
+                                 class="w-full h-full object-cover" />
+                            <div class="absolute top-0 left-0 w-full h-full flex flex-col items-start justify-end p-5 sm:p-7 md:p-10">
+                                <a href="#"
+                                   class="py-[10px] md:py-3 px-7 md:px-8 lg:py-4 lg:px-10 font-semibold text-sm md:text-base rounded-[30px] md:rounded-[35px] text-white bg-[#4E97FD] duration-300">Best Offer</a>
+                            </div>
+                        </div>
+                        <!-- 3 -->
+                        <div class="swiper-slide w-full h-full relative">
+                            <img src="~/images/intro/intro_img7.jpg"
+                                 alt="intro-img"
+                                 class="w-full h-full object-cover" />
+                            <div class="absolute top-0 left-0 w-full h-full flex flex-col items-start justify-end p-5 sm:p-7 md:p-10">
+                                <a href="#"
+                                   class="py-[10px] md:py-3 px-7 md:px-8 lg:py-4 lg:px-10 font-semibold text-sm md:text-base rounded-[30px] md:rounded-[35px] text-white bg-[#4E97FD] duration-300">Best Offer</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="intro__cards flex flex-col md:flex-row 2xl:flex-col w-full 2xl:w-1/3 2xl:pl-2 mt-4 sm:mt-2 2xl:mt-0">
+                    <!-- 1 -->
+                    <div class="intro__cards--item w-full md:pr-1 2xl:pr-0 2xl:pb-1 h-[225px] lg:h-[265px] relative">
+                        <img src="~/images/intro/intro_img4.webp"
+                             alt="intro-img"
+                             class="w-full h-full object-cover" />
+                        <div class="absolute top-0 left-0 w-full h-full p-4 sm:p-8">
+                            <p class="uppercase text-[15px] lg:text-base mb-[6px] lg:mb-2 text-gray-600">
+                                HOME MEDICAL SUPPLIES
+                            </p>
+                            <p class="text-[20px] lg:text-[22px] mb-[10px] lg:mb-3 text-gray-800">
+                                Portable Mesh Atomizer
+                            </p>
+                            <p class="text-[#E4573D] mb-6 lg:mb-8 font-semibold text-[22px] lg:text-2xl">
+                                $40.00
+                            </p>
+                            <a href="#"
+                               class="py-2 lg:py-3 px-4 lg:px-6 text-[15px] lg:text-base font-semibold rounded-[27px] text-white bg-[#4E97FD] hover:bg-[#E4573D] duration-300 text-sm">30% Off</a>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="intro__cards--item w-full mt-4 sm:mt-2 md:mt-0 md:pl-1 2xl:pl-0 2xl:pt-1 h-[225px] lg:h-[265px] relative">
+                        <img src="~/images/intro/intro_img5.webp"
+                             alt="intro-img"
+                             class="w-full h-full object-cover" />
+                        <div class="absolute top-0 left-0 w-full h-full p-4 sm:p-8">
+                            <p class="uppercase text-[15px] lg:text-base mb-[6px] lg:mb-2 text-gray-600">
+                                HOME MEDICAL SUPPLIES
+                            </p>
+                            <p class="text-[20px] lg:text-[22px] mb-[10px] lg:mb-3 text-gray-800">
+                                Sanitizer Gel Alcohol
+                            </p>
+                            <p class="text-[#E4573D] mb-6 lg:mb-8 font-semibold text-[22px] lg:text-2xl">
+                                $40.00
+                            </p>
+                            <a href="#"
+                               class="py-2 lg:py-3 px-4 lg:px-6 text-[15px] lg:text-base font-semibold rounded-[27px] text-white bg-[#4E97FD] hover:bg-[#E4573D] duration-300 text-sm">By 1 Get 1</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @Html.Partial("fetchProduct", ViewData["product"])
+   
+  
+    <!-- BRANDS SECTION -->
+
+</main>
+

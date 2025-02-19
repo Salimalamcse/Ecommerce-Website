@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "CustomerProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Customer>
+
+
+
+<div class="container mx-auto px-4">
+    <div class="flex justify-center mt-3">
+        <div class="w-1/3"></div>
+        <div class="w-2/3">
+            <h4 class="text-center text-lg font-semibold">Customer Profile</h4>
+
+@*             -----------------------------------Profile Image------------------------------------------------ 
+ *@
+            <form method="post" asp-action="updateCustomerimage" class="space-y-3 d-flex " enctype="multipart/form-data">
+                <div class="items-center">
+                    <img src="@("~/customer_images/"+Model[0].customer_image)" asp-append-Version="true" style="height:200px; width:200px" />
+                </div>
+                <input type="file"  name="customer_image" class="w-full p-2 border rounded" value="@Model[0].customer_image" />
+                <input type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition" value="Update Image" />
+
+
+                <input type="hidden" placeholder="Enter Your id" name="customer_id" class="w-full p-2 border rounded" value="@Model[0].customer_Id" />
+
+                <input type="hidden" placeholder="Enter Your Name" name="customer_name" class="w-full p-2 border rounded" value="@Model[0].customer_name" />
+                             
+                <input type="hidden" placeholder="Enter Your Phone" name="customer_phone" class="w-full p-2 border rounded" value="@Model[0].customer_phone" />
+                            
+                <input type="hidden" placeholder="Enter Your Email" name="customer_email" class="w-full p-2 border rounded" value="@Model[0].customer_email" />
+                           
+                <input type="hidden" placeholder="Enter Your Password" name="customer_password" class="w-full p-2 border rounded" value="@Model[0].customer_password" />
+                             
+                <input type="hidden" placeholder="Enter Your Gender" name="customer_gender" class="w-full p-2 border rounded" value="@Model[0].customer_gender" />
+                             
+                <input type="hidden" placeholder="Enter Your Country" name="customer_coutory" class="w-full p-2 border rounded" value="@Model[0].customer_coutory" />
+                             
+                <input type="hidden" placeholder="Enter Your City" name="customer_city" class="w-full p-2 border rounded" value="@Model[0].customer_city" />
+                             
+                <input type="hidden" placeholder="Enter Your Address" name="customer_address" class="w-full p-2 border rounded" value="@Model[0].customer_address" />
+
+                <input type="hidden" name="customer_image" class="w-full p-2 border rounded" value="@Model[0].customer_image" />
+
+            </form>
+
+@*             -----------------------------------------------------Profile --------------------------------------------------------------
+ *@
+            <form method="post" asp-action="updateCustomerProfile" class="space-y-3">
+
+                <input type="hidden" placeholder="Enter Your id" name="customer_id" class="w-full p-2 border rounded" value="@Model[0].customer_Id" />
+
+                <input type="text" placeholder="Enter Your Name" name="customer_name" class="w-full p-2 border rounded" value="@Model[0].customer_name" />
+
+                <input type="text" placeholder="Enter Your Phone" name="customer_phone" class="w-full p-2 border rounded" value="@Model[0].customer_phone" />
+
+                <input type="text" placeholder="Enter Your Email" name="customer_email" class="w-full p-2 border rounded" value="@Model[0].customer_email" />
+
+                <input type="text" placeholder="Enter Your Password" name="customer_password" class="w-full p-2 border rounded" value="@Model[0].customer_password" />
+
+                <input type="text" placeholder="Enter Your Gender" name="customer_gender" class="w-full p-2 border rounded" value="@Model[0].customer_gender" />
+
+                <input type="text" placeholder="Enter Your Country" name="customer_coutory" class="w-full p-2 border rounded" value="@Model[0].customer_coutory" />
+
+                <input type="text" placeholder="Enter Your City" name="customer_city" class="w-full p-2 border rounded" value="@Model[0].customer_city" />
+
+                <input type="text" placeholder="Enter Your Address" name="customer_address" class="w-full p-2 border rounded" value="@Model[0].customer_address" />
+
+                <input type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition" value="Update Profile" />
+            </form>
+        </div>
+        <div class="w-1/6"></div>
+    </div>
+</div>
+
+

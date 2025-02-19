@@ -1,0 +1,25 @@
+﻿@model Cart
+<div class="container-fluid px-4">
+    <h2 class="mt-4 text-center text-uppercase text-bg-danger" style="letter-spacing:4px">do you want to delete Cart </h2>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <ul class="list-group my-4">
+
+            <li class="list-group-item">Cart id : @Model.cart_id</li>
+            <li class="list-group-item">Product Name : @Model.prod_id</li>
+            <li class="list-group-item">Customer Name : @Model.cust_id</li>
+            <li class="list-group-item">Product Quantity : @Model.product_quntity</li>
+            <li class="list-group-item">Cart Status : @Model.cart_status</li>
+
+
+        </ul>
+        <a href="@Url.Action("deleteCart","Admin",new{id=Model.Id})" class="btn btn-danger">Delete Cart</a>
+        <a href="@Url.Action("fetchCart","Admin",new{id=Model.Id})" class="btn btn-warning ">Back to List</a>
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+

@@ -1,0 +1,65 @@
+﻿@model List<Product>
+
+<section id="hotItems" class="mb-16">
+    <div class="container">
+        <div class="flex items-center justify-between">
+            <h2 class="text-[22px] lg:mb-8 md:text-[28px] 2xl:text-[34px] text-gray-800">
+                Hot Items
+            </h2>
+            <a href="@Url.Action("fetchAllProducts","Customer")" class="flex items-center text-black hover:text-[#4E97FD] duration-200">
+                <span class="mr-1 sm:mr-3 text-sm sm:text-base">View all products</span>
+                <i class="bx bxs-right-arrow-alt text-2xl text-[#4E97FD]"></i>
+            </a>
+        </div>
+
+        <!-- Swiper Slider -->
+        <div class="swiper dailySwiper mt-6">
+            <div class="swiper-wrapper">
+                <!-- Product Items -->
+                @foreach (var prod in Model)
+                {
+                    <div class="swiper-slide w-[250px] bg-white p-4 rounded-lg shadow-lg border border-gray-200 flex flex-col justify-between min-h-[420px]">
+                        <div>
+                            <a href="@Url.Action("ProductDetail","Customer",new{id=prod.product_id})">
+                                <img src="@Url.Content("~/product_images/" + prod.product_image)"
+                                     alt="daily image"
+                                     class="w-full h-[200px] object-cover rounded-md mb-4" />
+                            </a>
+                            <span class="uppercase text-sm text-gray-500 block mb-2">
+                                @prod.product_Description
+                            </span>
+                            <a href="@Url.Action("ProductDetail","Customer",new{id=prod.product_id})" class="block text-gray-700 hover:text-[#4E97FD] duration-200 capitalize text-[18px] font-medium mb-2">
+                                @prod.product_name
+                            </a>
+                        </div>
+                        <div class="mt-auto">
+                            <span class="text-xl font-semibold text-[#4E97FD] mr-2">₹@prod.product_Price</span>
+                        </div>
+                        <div class="flex items-center mt-3 space-x-2">
+
+                            <form method="post" asp-action="AddToCart">
+
+                                <input type="hidden" name="prod_id" value="@prod.product_id">
+                                <input type="submit" value="Add To Cart"
+                                       class="w-full max-w-xs bg-yellow-500 text-black py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300 ease-in-out text-center text-base font-semibold shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                            </form>
+
+
+                            <button class="w-1/2 bg-green-600 text-white py-2 px-3 rounded-md hover:bg-green-700 transition-all text-center text-sm font-medium shadow-md">
+                                Buy
+                            </button>
+                        </div>
+
+
+
+                        
+                    </div>
+                }
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</section>

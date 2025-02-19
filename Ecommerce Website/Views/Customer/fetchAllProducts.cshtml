@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "fetchAllProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* <div class="container mt-4">
+    <h2 class="text-center mb-4">All Products</h2>
+    <div class="mt-3 d-flex justify-content-between flex-wrap">
+        @Html.Partial("fetchProduct", ViewData["product"])
+    </div>
+</div> *@
+
+<div class="container mx-auto mt-4">
+    <h2 class="text-center text-2xl font-semibold mb-4">All Products</h2>
+    <div class="mt-3 flex justify-between flex-wrap gap-4">
+        @Html.Partial("fetchProduct", ViewData["product"])
+
+    </div>
+    @if (TempData["message"]!= null)
+    {
+        <h2 class="text-green-600 font-semibold mt-4">@TempData["message"]</h2>
+    }
+</div>
+
+
+
